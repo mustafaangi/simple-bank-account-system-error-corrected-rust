@@ -1,11 +1,11 @@
-// Define the Account trait with deposit and withdraw methods returning Result
+
 trait Account {
     fn deposit(&mut self, amount: f64) -> Result<(), String>;
     fn withdraw(&mut self, amount: f64) -> Result<(), String>;
     fn balance(&self) -> f64;
 }
 
-// Implement the BankAccount struct
+
 struct BankAccount {
     account_number: u32,
     holder_name: String,
@@ -48,23 +48,23 @@ impl Account for BankAccount {
 }
 
 fn main() {
-    // Create two BankAccount instances
+
     let mut account1 = BankAccount::new(1001, "Alice".to_string());
     let mut account2 = BankAccount::new(1002, "Bob".to_string());
 
-    // Deposit into account1
+
     match account1.deposit(500.0) {
         Ok(_) => println!("Deposit successful. New balance: ${}", account1.balance()),
         Err(e) => println!("Deposit failed: {}", e),
     }
 
-    // Withdraw from account2
+   
     match account2.withdraw(200.0) {
         Ok(_) => println!("Withdrawal successful. New balance: ${}", account2.balance()),
         Err(e) => println!("Withdrawal failed: {}", e),
     }
 
-    // Print balances
+   
     println!(
         "{}'s balance: ${}",
         account1.holder_name,
